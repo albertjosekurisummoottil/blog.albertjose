@@ -62,6 +62,62 @@
                 <p>Single(root) entry point</p>
                 <p>No need for out-of-band information or documentation</p>
             </div>
+
+            <div class="post">
+                <h1>HTTP methods</h1>
+                <p>HTTP methods are the verbs that act on resources in a RESTful API.</p>
+                <p>1) GET and HEAD</p>
+                <p>GET is the most common and simplest HTTP verb, it just retrieves the resource that you specify. HEAD is less common, but also simple. A HEAD request behaves exactly the same as the GET request, but it only returns the HTTP headers and doesn't return the resource itself. HEAD is useful when you need to look at headers like Expires to control caching of resources. GET and HEAD are both read-only. A GET or HEAD request should never directly change any application state. For example, a client shouldn't be able to update or delete a resource with a GET request.</p>
+                <p>2) POST</p>
+                <p>POST should be used to create resources when the resource ID is not known in advanced. It's also possible to use POST for partial updates to existing resources.</p>
+                <p>3) PUT</p>                
+                <p>The PUT method can also be used to create or update resources. And this causes a lot of confusion. Should your API use POST or PUT? To answer that question we have to define what it means for a method to be idempotent. An idempotent method is a method that has the same effect when sent once or multiple times. In other words, it doesn't have any side effects.</p>
+                <p>In a REST API, PUT can be used for creating and updating resources when the ID or URI is known in advance.</p> 
+                <p>4) PATCH</p>
+                <p>PATCH on the other hand can be used for partial updates because it is not an idempotent method.</p>
+                <p>5) DELETE</p>
+                <p>The DELETE method looks simple by comparison. It simply deletes a resource with a known ID. Since it could be retried without any side effects, DELETE is an idempotent method.</p>
+
+                <br>
+                <p>
+                    Verb : GET<br>
+                    Action : Retrieve a resource<br>
+                    Idempotent? : Yes<br>
+                    Safe? : Yes<br>
+                    Response body? : Yes<br>
+                    Response cacheable? : Yes<br><br>
+                    Verb : HEAD<br>
+                    Action : Retrieve headers<br>
+                    Idempotent? : Yes<br>
+                    Safe? : Yes<br>
+                    Response body? : No<br>
+                    Response cacheable? : Yes<br><br>
+                    Verb : POST<br>
+                    Action : Create or partial update<br>
+                    Idempotent? : No<br>
+                    Safe? : No<br>
+                    Response body? : Yes<br>
+                    Response cacheable? : Maybe*<br><br>
+                    Verb : PUT<br>
+                    Action : Create or full update(upsert)<br>
+                    Idempotent? : Yes<br>
+                    Safe? : No<br>
+                    Response body? : No<br>
+                    Response cacheable? : No<br><br>
+                    Verb : PATCH<br>
+                    Action : Partial update<br>
+                    Idempotent? : No<br>
+                    Safe? : No<br>
+                    Response body? : No<br>
+                    Response cacheable? : No<br><br>
+                    Verb : DELETE<br>
+                    Action : Delete a resource<br>
+                    Idempotent? : Yes<br>
+                    Safe? : No<br>
+                    Response body? : No<br>
+                    Response cacheable? : No<br><br>
+
+                </p>
             <!--<div class="post">
                 <h1>Post Title</h1>
                 <p>This is sample post</p>
