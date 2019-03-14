@@ -73,23 +73,38 @@
             </div> 
             <div class="post">
                 <h1>Manipulating style with JS</h1>
-                <p><br><br>
-                var tag = document.getElementById("highlight");<br>
-                console.dir(tag);<br>
-                tag.style.color = "blue";<br>
-                tag.style.border="10px solid red";<br><br>
-                Define a class in css<br><br>
-                .some-class {<br>
-                    color: blue;<br>
-                    border: 10px solid red;<br>
-                }<br><br>
+                const div = document.createElement('div');<br>
+                div.className = 'foo';<br><br>
 
-                var tag = document.getElementById("highlight");<br><br>
-                tag.classList.add("some-class");<br>   
-                var tag = document.querySelector("h1");<br>
-                console.dir(tag);<br>
-                tag.classList.add("some-class");<br>
-                tag.classList.toggle("some-class");<br>             
+                // our starting state: <div class="foo"></div><br>
+                console.log(div.outerHTML);<br>
+
+                // use the classList API to remove and add classes<br>
+                div.classList.remove("foo");<br>
+                div.classList.add("anotherclass");<br><br>
+
+                // <div class="anotherclass"></div><br>
+                console.log(div.outerHTML);<br><br>
+
+                // if visible is set remove it, otherwise add it<br>
+                div.classList.toggle("visible");<br><br>
+
+                // add/remove visible, depending on test conditional, i less than 10<br>
+                div.classList.toggle("visible", i < 10 );<br><br>
+
+                console.log(div.classList.contains("foo"));<br><br>
+
+                // add or remove multiple classes<br>
+                div.classList.add("foo", "bar", "baz");<br>
+                div.classList.remove("foo", "bar", "baz");<br>
+
+                \/\/ add or remove multiple classes using spread syntax<br>
+                const cls = ["foo", "bar"];<br>
+                div.classList.add(...cls); <br>
+                div.classList.remove(...cls);<br><br>
+
+                // replace class "foo" with class "bar"<br>
+                div.classList.replace("foo", "bar");   <br>          
             </div>      
             <!--<div class="post">
                 <h1>Post Title</h1>
